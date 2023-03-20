@@ -1,0 +1,351 @@
+/* 숨기기 */
+.a11y-hidden {
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+}
+
+/* layout */
+body {
+  background-color: #eae8fe;
+}
+
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0 28px;
+  padding-top: 247px;
+}
+
+.vendeing-machine,
+.info-money,
+.info-myitems {
+  width: 360px;
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 31px 27px 28px;
+}
+
+/* colacola logo */
+.Logo {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 386px;
+  height: 180px;
+  background: url(images/bg.svg) center/cover no-repeat;
+}
+
+.item-name {
+  font-size: 9px;
+  margin: 5px;
+}
+/* 자판기 꾸미기 */
+.wrap .vending-machine {
+  position: relative;
+  padding: 31px 27px 28px 27px;
+}
+
+/* 자판기 아이템 리스트*/
+.vendeing-machine .item-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* 중앙 정렬 */
+  align-items: center; /* 중앙 정렬 */
+  margin-bottom: 8px;
+  /* margin: 31px 20px; 밴딩머신에 백 그라운드 흰색 마진 */
+}
+/* 자판기 아이템 */
+.item-list li {
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 중앙 정렬 */
+  align-items: center; /* 중앙 정렬 */
+  position: relative;
+  width: 30%;
+  height: 130px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+/* 품절 상품 */
+.item-list .sold-out {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+/* 자판기 메뉴 클릭 */
+.vendeing-machine .item-list li:active:before {
+  display: block;
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  border: 3px solid #6327fe;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+/*가격표 css*/
+.item-text {
+  display: inline-block;
+  font-size: 9px;
+  padding: 5px 15px;
+  background-color: #6327fe;
+  border-radius: 50px;
+  color: #fff;
+}
+
+.vendeing-machine .content {
+  margin-top: 20px;
+}
+
+.cont-balance {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cont-deposit {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* 입금액을 입력하세요 */
+.deposit {
+  border-radius: 5px;
+  background: #ffffff;
+  border: 1px solid #cccccc;
+}
+.select-get {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.txt-balance {
+  width: 200px;
+  height: 33px;
+}
+
+/* 잔액 */
+.txt-balance {
+  font-size: 14px;
+  line-height: 20px;
+  background-color: #eae8fe;
+  width: 200px;
+  height: 30px;
+  padding: 7px 8px 5px 8px;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+.deposit {
+  width: 200px;
+  height: 30px;
+  box-sizing: border-box;
+}
+
+/* 거스름돈 반환, 입금 btn*/
+.cont-change,
+.btn-put {
+  width: 94px;
+  height: 32px;
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+}
+
+.select-cola img {
+  width: 20px; /* 이미지의 크기 조절 */
+  padding: 5px 10px;
+}
+
+.select-cola .item-txt {
+  text-align: center; /* 텍스트 중앙 정렬 */
+}
+
+.count {
+  border: 1px solid #cccccc;
+}
+/*획득 버튼*/
+.btn-get {
+  font-weight: 700;
+  background-color: #6327fe;
+  color: white;
+  width: 94px;
+  height: 106px;
+  border: none;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+  font-size: 13px;
+  padding: 6px 8px;
+  border-radius: 5px;
+}
+
+.select-cola {
+  display: flex;
+  align-items: center;
+  font-size: 9px;
+}
+.count {
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+  margin-right: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.scroll-cola {
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  height: 107px; /* 스크롤이 필요한 높이 지정 */
+  background-color: #eae8fe;
+  width: 65%;
+}
+
+/* 스크롤바 스타일 지정 */
+::-webkit-scrollbar {
+  width: 5px; /* 스크롤바 너비 지정 */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: white; /* 스크롤바 색상 지정 */
+  border-radius: 5px; /* 스크롤바 모양 지정 */
+  border: 1px solid #cccccc;
+  padding-right: 5px;
+}
+
+.select-cola {
+  margin: 15px 1px -8px 3px;
+  border-radius: 5px;
+  background-color: #fff;
+  width: 90%;
+}
+
+.two {
+  margin-bottom: 15px;
+}
+.txt-balance {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+/* 내정보 */
+
+/*옆이랑 맞추기 코드리뷰때 이런식으로 안 하는 방법 배워오기..*/
+.info-myitems {
+  height: 472.5px;
+}
+
+.info-get-drink {
+  display: block;
+  padding-bottom: 10px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+}
+.info-money {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 360px;
+  height: 50px;
+  margin-bottom: 20px;
+}
+.info-money-txt {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  background: #eae8fe;
+  width: 306px;
+  height: 32px;
+  border-radius: 5px;
+  align-items: center;
+}
+
+.money {
+  padding-left: 10px;
+}
+.txt-money {
+  font-weight: bold;
+  padding: 10px;
+}
+
+.get-drink {
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  width: 100%;
+  height: 364px; /* 스크롤이 필요한 높이 지정 */
+  background-color: #eae8fe;
+}
+
+.get-cola {
+  width: 90%;
+}
+
+.cola {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  margin: 15px 1px -8px 3px;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.cola img {
+  width: 20px; /* 이미지의 크기 조절 */
+  padding: 5px 10px;
+  margin-right: -5px;
+}
+
+.total-amount {
+  display: block;
+  text-align: right;
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* 이건 자신이 없다 */
+@media (max-width: 768px) {
+  /* 모바일 기기에서만 적용될 CSS 코드 */
+  .wrap {
+    width: 100%;
+  }
+}
