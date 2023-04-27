@@ -4,138 +4,160 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>vendeing-machine</title>
-    <link rel="stylesheet" href="reset.css" />
-    <link rel="stylesheet" href="style.css" />
+    <title>콜라 자판기</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
+
   <body>
-    <section class="wrap">
-      <div class="Logo"></div>
-      <h1 class="a11y-hidden">ColaCola</h1>
-      <section class="vendeing-machine">
-        <ul class="item-list">
+    <h1><img src="./img/cola-logo.png" alt="cola cola" /></h1>
+
+    <main>
+      <!-- section 1 -->
+      <section class="section1">
+        <h2 class="a11y-hidden">판매 음료</h2>
+        <ul class="cola-list">
           <li>
-            <img src="images/redcola.svg" alt="" />
-            <strong class="item-name">Original_Cola</strong>
-            <span class="item-text">1000원</span>
+            <button class="btn-cola active" type="button">
+              <img class="cola-img" src="./img/cola-original.png" alt="" />
+              <span class="cola-name">Original_Cola</span>
+              <strong class="cola-price">1000원</strong>
+            </button>
           </li>
           <li>
-            <img class="sold-out" src="images/품절.svg" alt="" />
-            <img src="images/violetcola.svg" alt="" />
-            <strong class="item-name">violet_Cola</strong>
-            <span class="item-text">1000원</span>
+            <button disabled class="btn-cola" type="button">
+              <img class="cola-img" src="./img/cola-violet.png" alt="" />
+              <span class="cola-name">Violet_Cola</span>
+              <strong class="cola-price">1000원</strong>
+              <strong class="soldout">
+                <span>품절</span>
+              </strong>
+            </button>
           </li>
           <li>
-            <img src="images/yellowcola.svg" alt="" />
-            <strong class="item-name">Yellow_Cola</strong>
-            <span class="item-text">1000원</span>
+            <button class="btn-cola" type="button">
+              <img class="cola-img" src="./img/cola-yellow.png" alt="" />
+              <span class="cola-name">Yellow_Cola</span>
+              <strong class="cola-price">1000원</strong>
+            </button>
           </li>
           <li>
-            <img src="images/coolcola.svg" alt="" />
-            <strong class="item-name">Cool_Cola</strong>
-            <span class="item-text">1000원</span>
+            <button class="btn-cola" type="button">
+              <img class="cola-img" src="./img/cola-cool.png" alt="" />
+              <span class="cola-name">Cool_Cola</span>
+              <strong class="cola-price">1000원</strong>
+            </button>
           </li>
           <li>
-            <img src="images/greencola.svg" alt="" />
-            <strong class="item-name">Green_Cola</strong>
-            <span class="item-text">1000원</span>
+            <button class="btn-cola active" type="button">
+              <img class="cola-img" src="./img/cola-green.png" alt="" />
+              <span class="cola-name">Green_Cola</span>
+              <strong class="cola-price">1000원</strong>
+            </button>
           </li>
           <li>
-            <img src="images/orangecola.svg" alt="" />
-            <strong class="item-name">Orange_Cola</strong>
-            <span class="item-text">1000원</span>
+            <button class="btn-cola" type="button">
+              <img class="cola-img" src="./img/cola-orange.png" alt="" />
+              <span class="cola-name">Orange_Cola</span>
+              <strong class="cola-price">1000원</strong>
+            </button>
           </li>
         </ul>
 
-        <!--contents-->
-        <div class="content">
-          <div class="cont-balance">
-            <div class="txt-balance">
-              잔액 : <span class="gap">1,000 원</span>
-            </div>
-            <button class="cont-change">거스름돈 반환</button>
+        <div class="container">
+          <div class="bg-box">
+            <h2 class="title">잔액</h2>
+            <p>1000원</p>
           </div>
-          <div class="cont-deposit">
-            <input type="number" class="deposit" placeholder=" 입금액 입력" />
-            <button class="btn-put">입금</button>
-          </div>
-          <div class="select-get">
-            <ul class="scroll-cola">
-              <li class="select-cola">
-                <img src="images/redcola.svg" />
-                <strong class="item-txt">Original_Cola</strong>
-                <strong class="count">1</strong>
-              </li>
-              <li class="select-cola two">
-                <img src="images/violetcola.svg" />
-                <strong class="item-txt">violet_Cola</strong>
-                <strong class="count">2</strong>
-              </li>
-            </ul>
-            <button class="btn-get">획득</button>
-          </div>
+          <button class="btn" type="button">거스름돈 반환</button>
+
+          <label for="input-money" class="a11y-hidden"
+            >금액 투입(단위:원)</label
+          >
+          <input
+            id="input-money"
+            min="1000"
+            step="1000"
+            type="number"
+            placeholder="입금액 입력"
+          />
+          <button class="btn" type="button">입금</button>
+
+          <h2 class="a11y-hidden">장바구니</h2>
+          <ul class="get-list">
+            <li>
+              <img src="./img/cola-original.png" alt="" />
+              Original_Cola
+              <strong
+                >1
+                <span class="a11y-hidden">개</span>
+              </strong>
+            </li>
+            <li>
+              <img src="./img/cola-green.png" alt="" />
+              Green_Cola
+              <strong
+                >2
+                <span class="a11y-hidden">개</span>
+              </strong>
+            </li>
+          </ul>
+
+          <button class="btn-get" type="button">획득</button>
         </div>
       </section>
-      <section class="my-info">
-        <h2 class="a11y-hidden">나의 정보 확인</h2>
-        <!--히든처리 할것.-->
-        <div class="info-money">
-          <div class="info-money-txt">
-            <div class="money">소지금 :</div>
-            <span class="txt-money">25,000원</span>
-          </div>
-        </div>
-        <div class="info-myitems">
-          <strong class="info-get-drink">획득한 음료</strong>
-          <div class="get-drink">
-            <ul class="get-cola">
-              <li class="cola">
-                <img src="images/redcola.svg" alt="" />
-                <strong class="item-name">Original_Cola</strong>
-                <span class="count">1</span>
-              </li>
-              <li class="cola">
-                <img src="images/greencola.svg" alt="" />
-                <strong class="item-name">Green-Cola</strong>
-                <span class="count">3</span>
-              </li>
-              <li class="cola">
-                <img src="images/orangecola.svg" alt="" />
-                <strong class="item-name">Orange-Cola</strong>
-                <span class="count">1</span>
-              </li>
-              <li class="cola">
-                <img src="images/violetcola.svg" alt="" />
-                <strong class="item-name">Violet_Cola</strong>
-                <span class="count">4</span>
-              </li>
-            </ul>
-          </div>
-          <strong class="total-amount">
-            총금액 :
-            <span class="txt-total-amount">9000원</span>
-          </strong>
+      <!-- //section 1 -->
+      <section class="section2">
+        <div class="bg-box">
+          <h2 class="title">소지금</h2>
+          <p><strong>25,000원</strong></p>
         </div>
       </section>
-    </section>
-    <!--    .a11y-hidden 클래스: 웹 접근성을 고려한 숨김 처리를 위한 스타일 클래스
-            body 태그: 전체 배경 색상
-            .wrap 클래스: 전체 레이아웃을 담당하는 클래스
-            .vendeing-machine, .info-money, .info-myitems 클래스: 각각 자판기, 금액 정보, 내가 구매한 아이템 정보를 담당하는 클래스
-            .Logo 클래스: 콜라콜라 로고를 담당하는 클래스
-            .item-name 클래스: 아이템의 이름을 담당하는 클래스
-            .item-list 클래스: 자판기 아이템 리스트를 담당하는 클래스
-            .item-list li 클래스: 자판기 아이템을 담당하는 클래스
-            .sold-out 클래스: 품절 상태를 나타내는 클래스
-            .content 클래스: 금액 정보와 관련된 클래스
-            .cont-balance 클래스: 잔액과 관련된 클래스
-            .cont-deposit 클래스: 입금액과 관련된 클래스
-            .deposit 클래스: 입금액을 입력하는 폼 요소의 스타일을 담당하는 클래스
-            .select-get 클래스: 구매 정보와 관련된 클래스
-            .txt-balance 클래스: 잔액 정보를 담당하는 클래스
-            .cont-change, .btn-put 클래스: 거스름돈 반환과 입금 버튼을 담당하는 클래스
-            .select-cola 클래스: 콜라 아이템을 선택하는 라디오 버튼을 담당하는 클래스
-            .count 클래스: 콜라 아이템 선택 시 개수를 선택하는 폼 요소의 스타일을 담당하는 클래스
-        -->
+      <section class="section3">
+        <h2 class="get-title">획득한 음료</h2>
+        <ul class="get-list">
+          <li>
+            <img src="./img/cola-original.png" alt="" />
+            Original_Cola
+            <strong
+              >1
+              <span class="a11y-hidden">개</span>
+            </strong>
+          </li>
+          <li>
+            <img src="./img/cola-green.png" alt="" />
+            Green_Cola
+            <strong
+              >2
+              <span class="a11y-hidden">개</span>
+            </strong>
+          </li>
+          <li>
+            <img src="./img/cola-orange.png" alt="" />
+            Orange_Cola
+            <strong
+              >1
+              <span class="a11y-hidden">개</span>
+            </strong>
+          </li>
+          <li>
+            <img src="./img/cola-violet.png" alt="" />
+            Violet_Cola
+            <strong
+              >5
+              <span class="a11y-hidden">개</span>
+            </strong>
+          </li>
+        </ul>
+        <p class="total-price">총금액 : 9,000 원</p>
+      </section>
+    </main>
+
+    <script type="module" src="js/index.js"></script>
   </body>
 </html>

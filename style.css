@@ -1,4 +1,30 @@
-/* 숨기기 */
+/* reset */
+body,
+h1,
+h2,
+p,
+ul,
+button {
+  padding: 0;
+  margin: 0;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+button {
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+}
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+/* 접근성을 위한 숨김처리 */
 .a11y-hidden {
   clip: rect(1px, 1px, 1px, 1px);
   clip-path: inset(50%);
@@ -10,342 +36,222 @@
   position: absolute;
 }
 
-/* layout */
+/* layout-------------------- */
 body {
-  background-color: #eae8fe;
+  font-family: "Noto Sans KR", sans-serif;
+}
+/* h1 */
+h1 {
+  text-align: center;
+}
+h1 img {
+  width: 386px;
+  max-width: calc(100% - (97px * 2));
+}
+section {
+  background: #fff;
 }
 
-.wrap {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 0 28px;
-  padding-top: 247px;
+/* pc */
+@media (min-width: 748px) {
+  body {
+    background: #eae8fe;
+  }
+
+  main {
+    width: 748px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 50px auto;
+    grid-template-areas:
+      "section1 section2"
+      "section1 section3";
+    gap: 20px 28px;
+  }
+
+  .section1 {
+    grid-area: section1;
+  }
+
+  .section2 {
+    grid-area: section2;
+  }
+
+  .section3 {
+    grid-area: section3;
+  }
+  h1 {
+    margin-bottom: 68px;
+  }
+}
+/* mobile */
+@media (max-width: 747px) {
+  h1 {
+    margin-bottom: 18px;
+  }
 }
 
-.vendeing-machine,
-.info-money,
-.info-myitems {
-  width: 360px;
-  background-color: #fff;
-  box-sizing: border-box;
+.section1 {
   padding: 31px 27px 28px;
 }
+/* 판매 음료 */
+.cola-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.btn-cola {
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  padding: 11px 12px 9px;
+  position: relative;
+  width: 100%;
+}
+.btn-cola.active {
+  box-shadow: 0 0 0 3px #6327fe;
+}
+.cola-img,
+.cola-name,
+.cola-price {
+  display: block;
+}
+.cola-img {
+  width: 36px;
+  margin: auto;
+}
+.cola-name {
+  font-size: 9px;
+  margin: 6px 0;
+}
+.cola-price {
+  font-size: 12px;
+  font-weight: 500;
+  background: #6327fe;
+  color: #fff;
+  padding: 2px 0;
+  border-radius: 20px;
+}
 
-/* colacola logo */
-.Logo {
+.soldout {
+  background: rgba(0, 0, 0, 0.8);
   position: absolute;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 386px;
-  height: 180px;
-  background: url(images/bg.svg) center/cover no-repeat;
-}
-
-.item-name {
-  font-size: 9px;
-  margin: 5px;
-}
-/* 자판기 꾸미기 */
-.wrap .vending-machine {
-  position: relative;
-  padding: 31px 27px 28px 27px;
-}
-
-/* 자판기 아이템 리스트*/
-.vendeing-machine .item-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center; /* 중앙 정렬 */
-  align-items: center; /* 중앙 정렬 */
-  margin-bottom: 8px;
-  /* margin: 31px 20px; 밴딩머신에 백 그라운드 흰색 마진 */
-}
-/* 자판기 아이템 */
-.item-list li {
-  margin: 5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* 중앙 정렬 */
-  align-items: center; /* 중앙 정렬 */
-  position: relative;
-  width: 30%;
-  height: 130px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
-  text-align: center;
-}
-/* 품절 상품 */
-.item-list .sold-out {
-  background-color: rgba(0, 0, 0, 0.8);
-  position: absolute;
+  left: 0;
   width: 100%;
   height: 100%;
   border-radius: 10px;
 }
-
-/* 자판기 메뉴 클릭 */
-.vendeing-machine .item-list li:active:before {
-  display: block;
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 100%;
-  top: 0px;
-  left: 0px;
-  border: 3px solid #6327fe;
-  border-radius: 10px;
-  box-sizing: border-box;
-}
-
-/*가격표 css*/
-.item-text {
+.soldout span {
   display: inline-block;
-  font-size: 9px;
-  padding: 5px 15px;
-  background-color: #6327fe;
-  border-radius: 50px;
-  color: #fff;
+  color: #eae8fe;
+  border: 6px double #eae8fe;
+  padding: 0 8px;
+  transform: rotate(-20deg) translate(-10px, 30px);
 }
 
-.vendeing-machine .content {
+/* 잔액 및 장바구니 */
+.container {
+  display: grid;
+  grid-template-columns: auto calc((100% - 24px) / 3);
+  grid-template-rows: 32px 32px 106px;
+  gap: 12px;
   margin-top: 20px;
 }
-
-.cont-balance {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.cont-deposit {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
-}
-
-/* 입금액을 입력하세요 */
-.deposit {
+.bg-box {
+  background: #eae8fe;
   border-radius: 5px;
-  background: #ffffff;
-  border: 1px solid #cccccc;
-}
-.select-get {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: 10px;
+  padding: 6px 10px;
 }
-
-.txt-balance {
-  width: 200px;
-  height: 33px;
-}
-
-/* 잔액 */
-.txt-balance {
+.bg-box .title,
+.bg-box p {
   font-size: 14px;
-  line-height: 20px;
-  background-color: #eae8fe;
-  width: 200px;
-  height: 30px;
-  padding: 7px 8px 5px 8px;
-  box-sizing: border-box;
-  border-radius: 5px;
+  font-weight: 500;
 }
-.deposit {
-  width: 200px;
-  height: 30px;
-  box-sizing: border-box;
+.bg-box .title::after {
+  content: " :";
 }
 
-/* 거스름돈 반환, 입금 btn*/
-.cont-change,
-.btn-put {
-  width: 94px;
-  height: 32px;
-  background: #ffffff;
-  border: 1px solid #cccccc;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
+/* section2 */
+.section2 {
+  padding: 9px 27px;
 }
 
-.select-cola img {
-  width: 20px; /* 이미지의 크기 조절 */
-  padding: 5px 10px;
-}
-
-.select-cola .item-txt {
-  text-align: center; /* 텍스트 중앙 정렬 */
-}
-
-.count {
-  border: 1px solid #cccccc;
-}
-/*획득 버튼*/
+.btn,
 .btn-get {
-  font-weight: 700;
-  background-color: #6327fe;
-  color: white;
-  width: 94px;
-  height: 106px;
-  border: none;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
-  font-size: 13px;
-  padding: 6px 8px;
   border-radius: 5px;
+  font-size: 13px;
+}
+.btn-get {
+  background: #6327fe;
+  color: #fff;
+}
+#input-money {
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+  padding: 0 6px;
+  font-size: 13px;
+}
+#input-money::placeholder {
+  color: #bdbdbd;
 }
 
-.select-cola {
+.get-list {
+  background: #eae8fe;
+  border-radius: 5px;
+  border: 1px solid #bdbdbd;
+  overflow-y: auto;
+  padding: 12px;
+}
+.get-list li {
+  background: #fff;
+  border-radius: 5px;
+  padding: 8px;
+  font-size: 9px;
   display: flex;
   align-items: center;
-  font-size: 9px;
+  gap: 10px;
 }
-.count {
+.get-list li:first-child ~ li {
+  margin-top: 6px;
+}
+.get-list li img {
+  width: 18px;
+}
+.get-list li strong {
+  font-size: 14px;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
   width: 30px;
   height: 30px;
-  margin: 0 auto;
-  margin-right: 10px;
-  border-radius: 5px;
-  font-size: 14px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.scroll-cola {
-  overflow-y: scroll;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid #cccccc;
-  border-radius: 5px;
-  height: 107px; /* 스크롤이 필요한 높이 지정 */
-  background-color: #eae8fe;
-  width: 65%;
-}
-
-/* 스크롤바 스타일 지정 */
-::-webkit-scrollbar {
-  width: 5px; /* 스크롤바 너비 지정 */
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: white; /* 스크롤바 색상 지정 */
-  border-radius: 5px; /* 스크롤바 모양 지정 */
-  border: 1px solid #cccccc;
-  padding-right: 5px;
-}
-
-.select-cola {
-  margin: 15px 1px -8px 3px;
-  border-radius: 5px;
-  background-color: #fff;
-  width: 90%;
-}
-
-.two {
-  margin-bottom: 15px;
-}
-.txt-balance {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  line-height: 30px;
   text-align: center;
+  margin-left: auto;
+  /* margin: auto 0 auto auto; */
 }
 
-/* 내정보 */
-
-/*옆이랑 맞추기 코드리뷰때 이런식으로 안 하는 방법 배워오기..*/
-.info-myitems {
-  height: 472.5px;
+.section3 {
+  padding: 25px 27px 26px;
 }
 
-.info-get-drink {
-  display: block;
-  padding-bottom: 10px;
+.get-title {
+  font-size: 14px;
   text-align: center;
-  font-size: 14px;
-  font-weight: bold;
+  margin-bottom: 13px;
 }
-.info-money {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 360px;
-  height: 50px;
-  margin-bottom: 20px;
-}
-.info-money-txt {
-  display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-  background: #eae8fe;
-  width: 306px;
-  height: 32px;
-  border-radius: 5px;
-  align-items: center;
-}
-
-.money {
-  padding-left: 10px;
-}
-.txt-money {
-  font-weight: bold;
-  padding: 10px;
-}
-
-.get-drink {
-  overflow-y: scroll;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid #cccccc;
-  border-radius: 5px;
-  width: 100%;
-  height: 364px; /* 스크롤이 필요한 높이 지정 */
-  background-color: #eae8fe;
-}
-
-.get-cola {
-  width: 90%;
-}
-
-.cola {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
-  margin: 15px 1px -8px 3px;
-  border-radius: 5px;
-  background-color: #fff;
-}
-
-.cola img {
-  width: 20px; /* 이미지의 크기 조절 */
-  padding: 5px 10px;
-  margin-right: -5px;
-}
-
-.total-amount {
-  display: block;
-  text-align: right;
+.total-price {
   font-size: 12px;
-  font-weight: bold;
-  margin-top: 10px;
+  text-align: right;
+  margin-top: 6px;
 }
-
-/* 이건 자신이 없다 */
-@media (max-width: 768px) {
-  /* 모바일 기기에서만 적용될 CSS 코드 */
-  .wrap {
-    width: 100%;
-  }
+.section3 {
+  display: flex;
+  flex-direction: column;
+}
+.section3 .get-list {
+  flex-grow: 1;
 }
