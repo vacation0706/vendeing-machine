@@ -1,7 +1,12 @@
-import ColaGenerator from "./classes/colaGenerator";
-import VendingMachineEvents from "./classes/vendingMachineEvents";
+import ColaGenerator from "./classes/colaGenerator.js";
+import VendingMachineEvents from "./classes/vendingMachineEvents.js";
 
 const colaGenerator = new ColaGenerator();
-const vendingmachineEvents = new VendingMachineEvents();
+const vendingMachineEvents = new VendingMachineEvents();
 
-console.log(loadData);
+// 탑레벨 await : 최상위 모듈에서 실핼되는 await
+
+(async function () {
+  await colaGenerator.setup();
+  vendingMachineEvents.bindEvent();
+})();
